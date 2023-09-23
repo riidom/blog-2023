@@ -12,7 +12,7 @@ The license for the font can be found as PDF in the `fonts` directory, or read o
 
 ## Develop / write
 
-I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Inside the `php` directory, rename `_metadata_demo.php` to `_metadata.php` please. also rename `post_demo` directory to `post`.
+I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Inside the `php` directory, rename `_metadata_demo.php` to `_metadata.php` please. Also rename `post_demo` directory to `post`, and `feed_demo.xml` to `feed.xml`.
 
 - start a local server (`$: php -S localhost:3000`) and do a manual reload in browser on change
 - if you use git, the list of modified files is useful to see what you have to push to server (do before wrapping up your commit)

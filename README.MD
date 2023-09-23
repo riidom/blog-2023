@@ -48,19 +48,19 @@ Add this on top, below `<title>` section.
 ```
 <item>
   <title>YOUR TITLE HERE</title>
-  <pubDate>Sun, 10 Sep 2023 15:00:00 +0200</pubDate>
+  <pubDate>Sun, 10 Sep 2023 15:00:00 +0000</pubDate>
   <link>https://YOUR.URL/blog/{date}/{name}.php</link>
-  <guid>https://YOUR.URL/blog/{date}/{name}.php</guid>
   <description>{teaser}</description>
 </item>
 ```
-You can delete older entries so a new subscriber will only see the last _n_ entries. 
+You can delete older entries so a new subscriber will only see the last _n_ entries. You can see the `pubDate` if you go to the post, open devtools and copy the contents of the very first `<p hidden>` inside the `<main>`. If you work locally, make sure to not accidentally copy a localhost-URL into your feed file!
 
 ## Personal data
 
 - in `index.php` change email and social media links
 - in `header.php` change blog name
 - in `_misc.php` -> `html_head()` change `<title>` tag
+- in `feed.xml`, change everything so it fits your blog and points to your URLs
 
 
 ## Multi-language setup

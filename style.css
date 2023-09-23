@@ -126,7 +126,7 @@ main {
   margin-inline: auto;
 }
 
-p {
+p, li {
   padding-inline: 0.75rem;
 }
 
@@ -216,9 +216,26 @@ h4, .h4 {
   margin-block-start: var(--fontsize-h4);
 }
 
-p, .p {
+p, .p, ul {
   font-size: var(--fontsize-p);
   margin-block-start: var(--fontsize-p);
+}
+
+li {
+  font-size: var(--fontsize-p);
+  list-style-type: disc;
+  margin-inline-start: 2rem;
+}
+
+code {
+  border-radius: 0.25rem;
+  border: 0.0625rem dashed var(--c-bordernote);
+  color: var(--c-text-muted);
+  font-family: monospace;
+  font-size: 0.8em;
+  margin-inline: 0.125rem;
+  padding-block-end: 0.0625rem;
+  padding-inline: 0.125rem;
 }
 
 p > a {

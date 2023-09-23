@@ -3,7 +3,7 @@
 - write html yourself
 - use some php helper functions
 - made for simple shared hosts: no build, no deploy, just push changed files via FTP
-- zero JS; language and theme handling only via browser preferences
+- zero JS, zero dependencies; language and theme handling only via browser preferences
 
 ## License
 
@@ -80,7 +80,7 @@ You can delete older entries so a new subscriber will only see the last _n_ entr
 
 ### Different/more languages
 
-Extend/change the array in `lang()`, add the corresponding `{name}.xy.php` file and the extra key in `$blog_titles`.
+Extend/change the array in `lang()`, add the corresponding `{name}.xy.php` file and the extra key in `$blog_titles`. This is the simple version here, there is no difference between e.g. `pt-BR` and `pt-PT`, just use `pt`.
 
 ## Theming
 

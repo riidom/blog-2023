@@ -68,11 +68,7 @@ You can delete older entries so a new subscriber will only see the last _n_ entr
 - in `header.php` change blog name
 - in `_misc.php` -> `html_head()` change `<title>` tag
 - in `feed.xml`, change everything so it fits your blog and points to your URLs
-<<<<<<< HEAD
 - in `style.css`, find the `.header__link::after` selector and change the `content`
-=======
-- in `style.css`, find the `.header__link::after` selecetor and change the `content`
->>>>>>> c03eea200ae3a0128a3a914613a5a19364175daf
 
 
 ## Multi-language setup

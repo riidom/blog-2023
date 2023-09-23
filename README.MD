@@ -5,6 +5,11 @@
 - made for simple shared hosts: no build, no deploy, just push changed files via FTP
 - zero JS; language and theme handling only via browser preferences
 
+## License
+
+The blog "software" is MIT, the example content text is CC-0, the example media for the blogs, including the teaser images, are also CC-0.
+The license for the font can be found as PDF in the `fonts` directory, or read online at https://brailleinstitute.org/wp-content/uploads/2020/11/Atkinson-Hyperlegible-Font-License-2020-1104.pdf.
+
 ## Develop / write
 
 - start a local server (`$: php -S localhost:3000`) and do a manual reload in browser on change

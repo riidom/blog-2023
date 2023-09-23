@@ -268,15 +268,18 @@ header {
   content: "riidom's blog";
 }
 
-.header__link:hover {
-  color: var(--c-background-header);
-  text-shadow: 0 0 0.5rem var(--c-header-link);
+body:not(.is_main) .header__link:hover {
+  color: var(--c-text-muted);
 }
 
-.header__link:hover::after {
+body:not(.is_main) .header__link:hover::after {
   content: "back to index";
   font-style: italic;
-  font-size: 2rem;
+  /* font-size: 2rem; */
+}
+
+body.is_main .header__link {
+  cursor: initial;
 }
 
 .header__imprint {
@@ -361,6 +364,15 @@ header {
 
 .post-card__date {
   color: var(--c-text-muted);
+}
+
+.post-card__link:hover .post-card__image {
+  filter: blur(0.25rem);
+}
+
+.post-card__link:hover {
+  outline: 0.25rem solid var(--c-text-main);
+  border-radius: 0.25rem;
 }
 
 

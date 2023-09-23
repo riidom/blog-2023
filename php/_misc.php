@@ -105,6 +105,10 @@ function rss_date($date) {
   they are the same on post page and index page
 */
 function head_and_header($title, $path_prefix = '../..') {
+  if ($title === 'Index') {
+    $location = 'class="is_main"';
+  }
+
   $head_and_header = <<<EOH
   <!DOCTYPE html>
   <html lang="$lang">
@@ -118,7 +122,7 @@ function head_and_header($title, $path_prefix = '../..') {
       <title>riidom | $title</title>
     </head>
 
-    <body>
+    <body $location>
       <header>
         <a href="/blog" class="header__link" tabindex="0">
           <span></span>

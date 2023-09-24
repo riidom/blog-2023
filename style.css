@@ -44,33 +44,35 @@
   --c-link: hsl(240, 100%, 94%);
   --c-link-underline: hsla(240, 100%, 94%, 0.666);
   --c-link-hover: hsl(0, 100%, 100%);
-  --c-card-text: hsl(0, 0%, 100%);
+  --c-card-text: hsla(0 0% 100% / 75%);
+  --c-card-text-hover: hsl(0 0% 100%);
   
   --c-bordernote: hsl(0, 0%, 35%);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --c-background: hsl(240, 20%, 80%);
-    --c-background-transp: hsla(240, 20%, 80%, 0.8);
-    --c-background-header: hsl(240, 20%, 85%);
+    --c-background: hsl(240, 20%, 90%);
+    --c-background-transp: hsla(240, 20%, 90%, 0.8);
+    --c-background-header: hsl(240, 30%, 80%);
 
-    --c-header-link: hsl(240, 70%, 30%);
+    --c-header-link: hsl(240, 40%, 40%);
 
-    --c-h1: hsl(235, 20%, 25%);
-    --c-h2: hsl(63, 55%, 25%);
-    --c-h3: hsl(35, 70%, 30%);
-    --c-h4: hsl(0, 80%, 25%);
+    --c-h1: hsl(240, 70%, 60%);
+    --c-h2: hsl(50, 30%, 50%);
+    --c-h3: hsl(35, 70%, 50%);
+    --c-h4: hsl(0, 70%, 50%);
 
     --hsl-text-main: 0 0% 15%;
     --c-text-main: hsl(var(--hsl-text-main));
-    --c-text-muted: hsla(var(--hsl-text-main) / 50%);
-    --c-link: hsl(240, 100%, 25%);
+    --c-text-muted: hsla(var(--hsl-text-main) / 65%);
+    --c-link: hsl(240, 100%, 35%);
     --c-link-underline: hsla(240, 100%, 25%, 0.666);
     --c-link-hover: hsl(0, 0%, 0%);
-    --c-card-text: hsl(0, 0%, 5%);
+    --c-card-text: hsla(0 0% 100% / 75%);
+    --c-card-text-hover: hsl(0 0% 100%);
 
-    --c-bordernote: hsl(0, 0%, 85%);
+    --c-bordernote: hsl(0, 0%, 75%);
   }
 }
 
@@ -357,7 +359,6 @@ body.is_main .header__link {
 .post-card__link {
   display: grid;
   grid-template-areas: "top";
-  color: var(--c-card-text);
   width: fit-content;
   align-items: center;
   justify-items: center;
@@ -374,7 +375,7 @@ body.is_main .header__link {
   backdrop-filter: blur(0.125rem) brightness(85%);
   border-radius: 0.25rem;
   border: 0.0625rem solid var(--c-text-muted);
-  color: var(--c-text-main);
+  color: var(--c-card-text);
   grid-area: top;
   padding-inline: 0.5rem;
   padding-block-start: 0.5rem;
@@ -396,6 +397,10 @@ body.is_main .header__link {
 
 .post-card__link:hover .post-card__image {
   filter: blur(0.25rem);
+}
+
+.post-card__link:hover .post-card__title {
+  color: var(--c-card-text-hover);
 }
 
 .post-card__link:hover {

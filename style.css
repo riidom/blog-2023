@@ -274,25 +274,34 @@ header {
 
 .header__link {
   color: var(--c-header-link);
-  font-size: min(4rem, 10vi);
-  font-weight: 100;
   text-decoration: none;
   width: 100%;
   text-align: center;
 }
 
-.header__link::after {
-  content: "riidom's blog";
+.header__logo {
+  width: 30rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-inline: auto;
+  margin-block-start: 1rem;
+  color: var(--c-header-link);
 }
 
-body:not(.is_main) .header__link:hover {
+.header__back {
+  opacity: 0;
+  bottom: 0;
+  left: 47%;
+  font-size: 1rem;
+}
+
+body:not(.is_main) .header__link:hover .header__back {
+  opacity: 100%;
+}
+
+body:not(.is_main) .header__link:hover .header__logo {
   color: var(--c-text-muted);
-}
-
-body:not(.is_main) .header__link:hover::after {
-  content: "back to index";
-  font-style: italic;
-  /* font-size: 2rem; */
 }
 
 body.is_main .header__link {
@@ -315,6 +324,7 @@ body.is_main .header__link {
   color: var(--c-text-main);
   text-align: end;
   cursor: pointer;
+  font-size: 3.5rem;
 }
 
 .header__imprint summary::marker {
@@ -323,7 +333,7 @@ body.is_main .header__link {
 
 .header__imprint summary:hover {
   color: var(--c-h3);
-} 
+}
 
 
 

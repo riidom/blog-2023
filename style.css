@@ -112,7 +112,7 @@
   margin: 0;
   padding: 0;
   font-family: atkinson;
-  transition: all 0.05s ease-in-out;
+  transition: all 0.1s ease-in-out;
   /* outline: 0.5px solid #faa3; */
 }
 
@@ -352,6 +352,7 @@ body.is_main .header__link {
   align-items: center;
   justify-items: center;
   text-decoration: none;
+  outline: 0rem solid var(--c-text-main);
 }
 
 .post-card__image {
@@ -388,7 +389,7 @@ body.is_main .header__link {
 }
 
 .post-card__link:hover {
-  outline: 0.25rem solid var(--c-text-main);
+  outline-width: 0.25rem;
   border-radius: 0.25rem;
 }
 

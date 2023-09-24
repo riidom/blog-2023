@@ -1,27 +1,27 @@
 @font-face {
   font-family: atkinson;
-  src: url("fonts/Atkinson-Hyperlegible-Regular-102a.woff2");
+  src: url("media/Atkinson-Hyperlegible-Regular-102a.woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: atkinson;
-  src: url("fonts/Atkinson-Hyperlegible-Italic-102a.woff2");
+  src: url("media/Atkinson-Hyperlegible-Italic-102a.woff2");
   font-weight: 400;
   font-style: italic;
 }
 
 @font-face {
   font-family: atkinson;
-  src: url("fonts/Atkinson-Hyperlegible-Bold-102a.woff2");
+  src: url("media/Atkinson-Hyperlegible-Bold-102a.woff2");
   font-weight: 700;
   font-style: normal;
 }
 
 @font-face {
   font-family: atkinson;
-  src: url("fonts/Atkinson-Hyperlegible-BoldItalic-102a.woff2");
+  src: url("media/Atkinson-Hyperlegible-BoldItalic-102a.woff2");
   font-weight: 700;
   font-style: italic;
 }
@@ -31,7 +31,7 @@
   --c-background-transp: hsla(240, 6%, 15%, 0.8);
   --c-background-header: hsl(240, 6%, 10%);
 
-  --c-header-link: hsl(200, 50%, 80%);
+  --c-header-link: hsl(192, 32%, 73%);
 
   --c-h1: hsl(235, 62%, 85%);
   --c-h2: hsl(63, 45%, 75%);

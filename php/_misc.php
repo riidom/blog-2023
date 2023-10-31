@@ -124,7 +124,7 @@ function head_and_header($title, $path_prefix = '../..') {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="$path_prefix/style.css">
       <link rel="icon" type="image/png" href="$path_prefix/favicon.png">
-      <link rel="alternate" type="application/rss+xml"  title="RSS riidom's blog" href="/blog/feed.xml" />
+      <link rel="alternate" type="application/rss+xml" title="RSS riidom's blog" href="/blog/feed.xml" />
       <title>riidom | $title</title>
     </head>
 

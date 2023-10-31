@@ -1,5 +1,6 @@
 <?php
 require_once('_metadata.php');
+require_once('_strings.php');
 
 function img($file, $width, $height, $alt="", $caption="") {
   if ($caption) {

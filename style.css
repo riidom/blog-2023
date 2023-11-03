@@ -415,7 +415,7 @@ body.is_main .header__link {
 
 
 
-/* Image */
+/* Image, Video */
 
 
 
@@ -430,6 +430,13 @@ img:not(.post-card__image) {
 figcaption {
   margin-block-start: var(--fontsize-small);
   margin-inline: 2rem;
+}
+
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
 }
 
 

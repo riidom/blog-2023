@@ -24,10 +24,11 @@ function download($file, $icon) {
   // use nice icon per "type"; can be file type, or find smarter taxonomy
 }
 
-function video($file) {
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video
-  // check what attributes to set automatic, which to pass as argument
-  // video will sit in post/{date}/media as the images do
+function video($file, $width, $height, $alt="") {
+  return <<<EOV
+  <video controls preload width=$width height=$height src="media/$file" title="$alt">
+  </video>
+  EOV;
 }
 
 function p_note($copy, $note, $side = "end") {

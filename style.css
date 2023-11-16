@@ -59,13 +59,13 @@
     --c-header-link: hsl(240, 40%, 40%);
 
     --c-h1: hsl(240, 70%, 60%);
-    --c-h2: hsl(50, 30%, 50%);
+    --c-h2: hsl(55, 96%, 27%);
     --c-h3: hsl(35, 70%, 50%);
     --c-h4: hsl(0, 70%, 50%);
 
     --hsl-text-main: 0 0% 15%;
     --c-text-main: hsl(var(--hsl-text-main));
-    --c-text-muted: hsla(var(--hsl-text-main) / 65%);
+    --c-text-muted: hsla(var(--hsl-text-main) / 70%);
     --c-link: hsl(240, 100%, 35%);
     --c-link-underline: hsla(240, 100%, 25%, 0.666);
     --c-link-hover: hsl(0, 0%, 0%);
@@ -326,11 +326,23 @@ body.is_main .header__link {
   z-index: 1;
 }
 
+@media (width < 31rem) {
+  .header__imprint {
+    top: 2rem;
+  }
+}
+
 .header__imprint summary {
   color: var(--c-text-main);
   text-align: end;
   cursor: pointer;
   font-size: 3.5rem;
+}
+
+@media (width < 31rem) {
+  .header__imprint summary {
+    font-size: 2rem;
+  }
 }
 
 .header__imprint summary::marker {
@@ -410,6 +422,7 @@ body.is_main .header__link {
 .post-card__link:hover {
   outline-width: 0.25rem;
   border-radius: 0.25rem;
+  background-color: var(--c-text-main);
 }
 
 

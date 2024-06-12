@@ -1,5 +1,5 @@
 
-<?php include_once 'php/_misc.php'?>
+<?php include_once 'php/misc.php'?>
 <?=head_and_header('Index', '.');?>
 
   <details class="header__imprint">

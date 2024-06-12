@@ -1,6 +1,6 @@
 <?php
-require_once('_metadata.php');
-require_once('_strings.php');
+require_once(dirname(__FILE__) . '/../post/metadata.php');
+require_once('strings.php');
 
 function img($file, $width, $height, $alt="", $caption="") {
   if ($caption) {
@@ -75,7 +75,7 @@ function lang() {
 }
 
 /*
-  gets a localized string from _metadata.php
+  gets a localized string from _string.php
 */
 function string($id) {
   global $string;

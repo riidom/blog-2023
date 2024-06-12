@@ -1,4 +1,4 @@
-<?php include_once './_misc.php'?>
+<?php include_once './misc.php'?>
 
 <h1 class="post-list--h1"><?=string('post_list')?></h1>
 

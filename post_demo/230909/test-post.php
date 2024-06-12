@@ -1,5 +1,5 @@
 <?php
-include_once '../../php/_misc.php';
+include_once '../../php/misc.php';
 ['date' => $date, 'name' => $name, 'lang' => $lang] = get_post_meta(getcwd());
 ?>
 

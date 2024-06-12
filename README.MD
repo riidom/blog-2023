@@ -12,10 +12,16 @@ The license for the font can be found as PDF in the `fonts` directory, or read o
 
 ## Develop / write
 
-I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Inside the `php` directory, rename `_metadata_demo.php` to `_metadata.php` please. Also rename `post_demo` directory to `post`, and `feed_demo.xml` to `feed.xml`.
+I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Unfortunately, this means for you:
+
+- inside the `php` directory, rename `_metadata_demo.php` to `_metadata.php`
+- also rename `post_demo` directory to `post`,
+- finally rename`feed_demo.xml` to `feed.xml`.
+
+Once this is sorted out (or you just created your own content and used demo stuff just for reference):
 
 - start a local server (`$: php -S localhost:3000`) and do a manual reload in browser on change
-- if you use git, the list of modified files is useful to see what you have to push to server (do before wrapping up your commit)
+- if you use git, the list of modified files is useful to see what you have to push to server
 - if you write content, check for layout breaks on long descriptions etc., it's not fool-proof
 
 ## Writing a new post
@@ -41,7 +47,7 @@ There is no check or fallback for missing translations, you have to commit to th
 
 See the beginning of `php/_misc.php` for available content functions to use, and demo content for example usage.
 
-#### boilerplate php
+#### Boilerplate PHP
 ```php
 <?php
 include_once '../../php/_misc.php';

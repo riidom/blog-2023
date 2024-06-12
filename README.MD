@@ -7,27 +7,29 @@
 
 ## Checklist for writing a new post
 
-1. Update `php/_metadata.php` with date, name, and per language: title and teaser
-2. Create new directory in `post/` named after date, inside:
-    1. Add teaser image, named {name}.webp
-    2. From old post, copy boilerplate php and rename to {name}.php
+1. update `post/metadata.php` with date, name, and per language: title and teaser
+2. create new directory in `post/` named after date, inside:
+    1. add teaser image, named {name}.webp
+    2. from old post, copy boilerplate php and rename to {name}.php
     3. add content php's per language {name}.{lang}.php
-3. Update `feed.xml`
+3. update `feed.xml`
+4. push new directory, as well as the updated `metadata.php` & `feed.xml` to your server
 
-For details, see below.
+_For details, see below._
 
 ## License
 
 The blog "software" is MIT, the example content text is CC-0, the example media for the blogs, including the teaser images, are also CC-0.
+
 The license for the font can be found as PDF in the `fonts` directory, or read online at https://brailleinstitute.org/wp-content/uploads/2020/11/Atkinson-Hyperlegible-Font-License-2020-1104.pdf.
 
 ## Develop / write
 
-I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Unfortunately, this means for you:
+I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Unfortunately, my clunky workaround means for you:
 
-- inside the `php` directory, rename `_metadata_demo.php` to `_metadata.php`
-- also rename `post_demo` directory to `post`,
-- finally rename`feed_demo.xml` to `feed.xml`.
+- rename `post_demo` directory to `post`
+- inside the just renamed `post` directory, rename `metadata_demo.php` to `metadata.php`
+- finally rename`feed_demo.xml` to `feed.xml`
 
 Once this is sorted out (or you just created your own content and use demo stuff just for reference):
 
@@ -41,27 +43,28 @@ Four blog posts and some media are included as demo content. Feel free to change
 
 ### About post metadata
 
-Each post has a `date`, a `name`, a `title`, a `teaser`. These are defined in `php/_metadata.php`.
+Each post has a `date`, a `name`, a `title`, a `teaser`. These are defined in `post/metadata.php`.
 
 The date is the core identifier, which means you can have only one blog post per day. The name is also the slug. Both date and name are localization-independent.
 
-Title and teaser need to be defined per language. See array structure in `php/_metadata.php`.
+Title and teaser need to be defined per language. See array structure in `post/metadata.php`.
 
 ### Post files
 
 In `post/`, create a sub-directory named after the post's date in `yymmdd` format. Inside, there needs to be:
+
 - a teaser image (see below)
 - a boilerplate php file (`{name}.php`). Copy as-is from other posts, or from the reference sub-section below
 - a content php file per language (`{name}.{language}.php`)
 
 There is no check or fallback for missing translations, you have to commit to the languages you want to support. Visitors will just see a `404` when a blog post file is missing.
 
-See the beginning of `php/_misc.php` for available content functions to use, and demo content for example usage.
+See the beginning of `php/misc.php` for available content functions to use, and the demo content for example usage.
 
 #### Boilerplate PHP
 ```php
 <?php
-include_once '../../php/_misc.php';
+include_once '../../php/misc.php';
 ['date' => $date, 'name' => $name, 'lang' => $lang] = get_post_meta(getcwd());
 ?>
 
@@ -70,7 +73,7 @@ include_once '../../php/_misc.php';
 <?=post_end()?>
 ```
 
-### Update `_metadata.php`
+### Update `metadata.php`
 
 Copy one of the existing blocks inside `$blog_titles`, and change the date and name according to the steps before, then set `'title'` and `'teaser'` text per language.
 
@@ -78,7 +81,7 @@ You can use `<br>` inside the title, to style the appearance on the blog index p
 
 ### Teaser image
 
-- file name is the post `name` and `.webp` extension
+- file name is the post `{name}` and `.webp` extension
 - 304 x 112 px
 - the center will be occupied by text
 
@@ -86,7 +89,7 @@ You can use `<br>` inside the title, to style the appearance on the blog index p
 
 Update texts and URLs in `<title>` section.
 Add this on top, below `<title>` section. 
-```
+```xml
 <item>
   <title>YOUR TITLE HERE</title>
   <pubDate>Sun, 10 Sep 2023 15:00:00 +0000</pubDate>
@@ -94,13 +97,17 @@ Add this on top, below `<title>` section.
   <description>{teaser}</description>
 </item>
 ```
-You can delete older entries so a new subscriber will only see the last _n_ entries. You can see the `pubDate` if you go to the post, open devtools and copy the contents of the very first `<p hidden>` inside the `<main>`. If you work locally, make sure to not accidentally copy a localhost-URL into your feed file!
+You can delete older entries so a new subscriber will only see the last _n_ entries.
+
+You can see the `pubDate` if you go to the post, open devtools and copy the contents of the very first `<p hidden>` inside the `<main>`.
+
+__ATTENTION:__ If you work locally, make sure to not accidentally copy a localhost-URL into your feed file!
 
 ## Personal data
 
 - in `index.php` change email and social media links
 - in `header.php` change blog name
-- in `_misc.php` -> `html_head()` change `<title>` tag
+- in `misc.php` -> `html_head()` change `<title>` tag
 - in `feed.xml`, change everything so it fits your blog and points to your URLs
 - in `style.css`, find the `.header__link::after` selector and change the `content`
 
@@ -109,9 +116,9 @@ You can delete older entries so a new subscriber will only see the last _n_ entr
 
 ### Just english: the easy way
 
-- in `_misc.php` -> `lang()`, always return `'en'`
+- in `misc.php` -> `lang()`, always return `'en'`
 - in your post folder, just have `{name}.php`, `{name}.en.php`, `{name}.webp`
-- in `_metadata.php`, just have a `'en' => [ ... ]` entry per date/post
+- in `metadata.php`, just have a `'en' => [ ... ]` entry per date/post
 
 ### Different/more languages
 

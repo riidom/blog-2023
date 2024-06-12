@@ -24,17 +24,34 @@ Four blog posts and some media are included as demo content. Feel free to change
 
 ### About post metadata
 
-- each post has a `date`, a `name`, a `title`, a `teaser`
-- also, each post has a sub-directory named after the `date`, inside the `post` folder and some data stored in `_metadata.php`
-- with the current system, you can only have one blog post per day!
+Each post has a `date`, a `name`, a `title`, a `teaser`. These are defined in `php/_metadata.php`.
+
+The date is the core identifier, which means you can have only one blog post per day. The name is also the slug. Both date and name are localization-independent.
+
+Title and teaser need to be defined per language. See array structure in `php/_metadata.php`.
 
 ### Post files
 
-Ignoring the image, there is one boilerplate post file (`{name}.php`) and then one for each language (`{name}.{language}.php`). Copy the boilerplate one from another post and change the middle part, `$date` and `$name`. Date must be same as the directory, name must be same as the filenames. And name will also be part of the URL, so stick with lowercase letters and dashes.
+In `post/`, create a sub-directory with the post's date in `yymmdd` format. Inside, there needs to be:
+- a teaser image (see below)
+- a boilerplate php file (`{name}.php`). Copy as-is from other posts, or from the reference sub-section below
+- a content php file per language (`{name}.{language}.php`)
 
 There is no check or fallback for missing translations, you have to commit to the languages you want to support. Visitors will just see a `404` when a blog post file is missing.
 
-- noteworthy: `p_note()` (see test-post for usage and effect and `_misc.php` for definition)
+See the beginning of `php/_misc.php` for available content functions to use, and demo content for example usage.
+
+#### boilerplate php
+```php
+<?php
+include_once '../../php/_misc.php';
+['date' => $date, 'name' => $name, 'lang' => $lang] = get_post_meta(getcwd());
+?>
+
+<?=post_begin("${date}")?>
+  <?php include "$name.$lang.php"?>
+<?=post_end()?>
+```
 
 ### Update `_metadata.php`
 

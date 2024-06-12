@@ -79,6 +79,7 @@ function lang() {
 */
 function string($id) {
   global $string;
+
   return $string[$id][lang()];
 }
 
@@ -100,6 +101,65 @@ function rss_date($date) {
   $month = substr($date, 2, 2);
   $day = substr($date, 4, 2);
   return date('r', mktime(15, 0, 0, $month, $day, $year));
+}
+
+/*
+  return data used in post root .php
+*/
+function get_post_meta($cwd) {
+  global $blog_titles;
+
+  $date = array_pop(explode("/", $cwd));
+
+  return [
+    'date' => $date,
+    'name' => $blog_titles[$date]['name'],
+    'lang' => lang()
+  ];
+}
+
+/*
+  returns html for begin of post pages
+*/
+function post_begin($date, $path_prefix = '../..') {
+  global $blog_titles;
+
+  $lang = lang();
+
+  $meta_full = $blog_titles[$date];
+  $meta = $meta_full[$lang];
+
+  $id = $meta_full['id'];
+  $title = strip_tags($meta['title']);
+  $teaser = $meta['teaser'];
+  $date_pretty = prettify_date($date);
+  $date_rss = rss_date($date);
+
+  $head_and_header = head_and_header($title);
+  
+  $begin = <<<EOH
+  {$head_and_header}
+      <main>
+        <p hidden>$date_rss</p>
+        <p class="h1-supheading">{$date_pretty}</p>
+        <h1>$title</h1>
+        <p class="h1-subheading">{$teaser}</p>
+  EOH;
+
+  return $begin;
+}
+
+/*
+  returns html for end of post pages
+*/
+function post_end() {
+  $end = <<<EOH
+      </main>
+    </body>
+  </html>
+  EOH;
+
+  return $end;
 }
 
 /*
@@ -146,45 +206,3 @@ function head_and_header($title, $path_prefix = '../..') {
   return $head_and_header;
 }
 
-/*
-  returns html for begin of post pages
-*/
-function post_begin($date, $path_prefix = '../..') {
-  global $blog_titles;
-  $lang = lang();
-
-  $meta_full = $blog_titles[$date];
-  $meta = $meta_full[$lang];
-
-  $id = $meta_full['id'];
-  $title = strip_tags($meta['title']);
-  $teaser = $meta['teaser'];
-  $date_pretty = prettify_date($date);
-  $date_rss = rss_date($date);
-
-  $head_and_header = head_and_header($title);
-  
-  $begin = <<<EOH
-  {$head_and_header}
-      <main>
-        <p hidden>$date_rss</p>
-        <p class="h1-supheading">{$date_pretty}</p>
-        <h1>$title</h1>
-        <p class="h1-subheading">{$teaser}</p>
-  EOH;
-
-  return $begin;
-}
-
-/*
-  returns html for end of post pages
-*/
-function post_end() {
-  $end = <<<EOH
-      </main>
-    </body>
-  </html>
-  EOH;
-
-  return $end;
-}

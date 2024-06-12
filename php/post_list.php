@@ -1,5 +1,7 @@
 <?php include_once './_misc.php'?>
+
 <h1 class="post-list--h1"><?=string('post_list')?></h1>
+
 <ul class="post-list__ul">
   <?php foreach($blog_titles as $date => $full_meta):?>
     <?php
@@ -8,6 +10,7 @@
       $title = $meta['title'];
       $teaser = $meta['teaser'];
     ?>
+
     <li class="post-card">
       <a class="post-card__link" href="post/<?=$date?>/<?=$name?>.php" tabindex="0">
         <img class="post-card__image" src="post/<?=$date?>/<?=$name?>.webp" alt="">
@@ -16,7 +19,7 @@
 
       <p class="post-card__teaser p-small">
         <em class="post-card__date">(<?=prettify_date($date)?>)</em>&nbsp;<?=$teaser?>
-  </p>
+      </p>
     </li>
   <?php endforeach ?>
 </ul>

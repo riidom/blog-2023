@@ -1,9 +1,6 @@
 <?php
 include_once '../../php/_misc.php';
-$lang = lang();
-
-$date = '230909';
-$name = 'test-post';
+['date' => $date, 'name' => $name, 'lang' => $lang] = get_post_meta(getcwd());
 ?>
 
 <?=post_begin("${date}")?>

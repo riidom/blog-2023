@@ -5,6 +5,17 @@
 - made for simple shared hosts: no build, no deploy, just push changed files via FTP
 - zero JS, zero dependencies; language and theme handling only via browser preferences
 
+## Checklist for writing a new post
+
+1. Update `php/_metadata.php` with date, name, and per language: title and teaser
+2. Create new directory in `post/` named after date, inside:
+    1. Add teaser image, named {name}.webp
+    2. From old post, copy boilerplate php and rename to {name}.php
+    3. add content php's per language {name}.{lang}.php
+3. Update `feed.xml`
+
+For details, see below.
+
 ## License
 
 The blog "software" is MIT, the example content text is CC-0, the example media for the blogs, including the teaser images, are also CC-0.
@@ -18,7 +29,7 @@ I have some difficulties to keep the demo content intact, but off my actual webs
 - also rename `post_demo` directory to `post`,
 - finally rename`feed_demo.xml` to `feed.xml`.
 
-Once this is sorted out (or you just created your own content and used demo stuff just for reference):
+Once this is sorted out (or you just created your own content and use demo stuff just for reference):
 
 - start a local server (`$: php -S localhost:3000`) and do a manual reload in browser on change
 - if you use git, the list of modified files is useful to see what you have to push to server
@@ -38,7 +49,7 @@ Title and teaser need to be defined per language. See array structure in `php/_m
 
 ### Post files
 
-In `post/`, create a sub-directory with the post's date in `yymmdd` format. Inside, there needs to be:
+In `post/`, create a sub-directory named after the post's date in `yymmdd` format. Inside, there needs to be:
 - a teaser image (see below)
 - a boilerplate php file (`{name}.php`). Copy as-is from other posts, or from the reference sub-section below
 - a content php file per language (`{name}.{language}.php`)

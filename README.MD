@@ -1,8 +1,8 @@
 # My super simple blog setup
 
 - write html yourself
-- use some php helper functions
-- made for simple shared hosts: no build, no deploy, just push changed files via FTP
+- use some php helper functions like they are components
+- made for simple shared hosts: no build, simplest deploy: just push changed files via FTP
 - zero JS, zero dependencies; language and theme handling only via browser preferences
 
 ## Checklist for writing a new post
@@ -13,7 +13,7 @@
     2. from old post, copy boilerplate php and rename to {name}.php
     3. add content php's per language {name}.{lang}.php
 3. update `feed.xml`
-4. push new directory, as well as the updated `metadata.php` & `feed.xml` to your server
+4. push to your server: new directory, updated `metadata.php` & `feed.xml`
 
 _For details, see below._
 

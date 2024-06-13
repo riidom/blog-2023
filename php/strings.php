@@ -13,6 +13,10 @@ $string = [
     'de' => 'Beiträge:',
     'en' => 'Posts:'
   ],
+  'about' => [
+    'de' => 'Über',
+    'en' => 'About'
+  ],
   'back_to_index' => [
     'de' => 'Zurück zum Index',
     'en' => 'Back to index'

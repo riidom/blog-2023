@@ -1,6 +1,9 @@
 <?php include_once './misc.php'?>
 
-<h1 class="post-list--h1"><?=string('post_list')?></h1>
+<div class="post-list--heading">
+  <h1 class="post-list--h1"><?=string('post_list')?></h1>
+  <a class="post-list--a" href="about.php">&#8627;<?=string('about')?></a>
+</div>
 
 <ul class="post-list__ul">
   <?php foreach($blog_titles as $date => $full_meta):?>

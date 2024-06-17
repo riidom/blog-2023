@@ -15,7 +15,7 @@
     ?>
 
     <li class="post-card">
-      <a class="post-card__link" href="post/<?=$date?>/<?=$name?>.php" tabindex="0">
+      <a class="post-card__link" href="post/<?=$date?>/<?=$name?>.php">
         <img class="post-card__image" src="post/<?=$date?>/<?=$name?>.webp" alt="">
         <p class="post-card__title h4"><?=$title?></p>
       </a>

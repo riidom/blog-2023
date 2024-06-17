@@ -106,7 +106,6 @@ __ATTENTION:__ If you work locally, make sure to not accidentally copy a localho
 ## Personal data
 
 - in `index.php` change email and social media links
-- in `header.php` change blog name
 - in `misc.php` -> `html_head()` change `<title>` tag
 - in `feed.xml`, change everything so it fits your blog and points to your URLs
 - in `style.css`, find the `.header__link::after` selector and change the `content`

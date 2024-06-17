@@ -281,8 +281,9 @@ p > a:focus-visible {
 header {
   background: var(--c-background-header);
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding-block: 0.5rem 1rem;
+  width: 100vi;
 }
 
 @media (29rem <= width) {
@@ -356,6 +357,7 @@ body.is_main .header__back {
 .post-list__ul {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   list-style-type: none;
   padding-block: 2rem;

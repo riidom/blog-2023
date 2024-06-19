@@ -128,7 +128,7 @@ main {
   margin-inline: auto;
 }
 
-p, li:not(.post__card) {
+p, li:not(.post-card) {
   padding-inline: 0.75rem;
 }
 

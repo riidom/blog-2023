@@ -14,8 +14,8 @@ $string = [
     'en' => 'Posts:'
   ],
   'about' => [
-    'de' => 'Über',
-    'en' => 'About'
+    'de' => 'sonstiges',
+    'en' => 'about'
   ],
   'back_to_index' => [
     'de' => 'Zurück zum Index',

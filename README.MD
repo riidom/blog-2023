@@ -19,19 +19,22 @@ _For details, see below._
 
 ## License
 
-The blog "software" is MIT, the example content text is CC-0, the example media for the blogs, including the teaser images, are also CC-0.
+The blog "software" is MIT, the example content text is CC-0, the example media for the blog and posts, including the teaser images, is also CC-0.
 
 The license for the font can be found as PDF in the `fonts` directory, or read online at https://brailleinstitute.org/wp-content/uploads/2020/11/Atkinson-Hyperlegible-Font-License-2020-1104.pdf.
 
-## Develop / write
+## Initial setup / Develop / Write
 
 I have some difficulties to keep the demo content intact, but off my actual website, and keep future, "real" content off the git repo. Unfortunately, my clunky workaround means for you:
 
+- first clone the repo, or download the .zip
 - rename `post_demo` directory to `post`
-- inside the just renamed `post` directory, rename `metadata_demo.php` to `metadata.php`
+- inside the just renamed `post` directory:
+  - rename `metadata_demo.php` to `metadata.php`
+  - rename `blog_info_demo.php` to `blog_info.php`
 - finally rename`feed_demo.xml` to `feed.xml`
 
-Once this is sorted out (or you just created your own content and use demo stuff just for reference):
+Once this is sorted out (or you just created your own content and are using demo stuff just for reference):
 
 - start a local server (`$: php -S localhost:3000`) and do a manual reload in browser on change
 - if you use git, the list of modified files is useful to see what you have to push to server
@@ -61,7 +64,7 @@ There is no check or fallback for missing translations, you have to commit to th
 
 See the beginning of `php/misc.php` for available content functions to use, and the demo content for example usage.
 
-#### Boilerplate PHP
+#### Boilerplate PHP for posts
 ```php
 <?php
 include_once '../../php/misc.php';
@@ -105,11 +108,7 @@ __ATTENTION:__ If you work locally, make sure to not accidentally copy a localho
 
 ## Personal data
 
-- in `index.php` change email and social media links
-- in `misc.php` -> `html_head()` change `<title>` tag
-- in `feed.xml`, change everything so it fits your blog and points to your URLs
-- in `style.css`, find the `.header__link::after` selector and change the `content`
-
+ -everything is bundled in `post/blog_info.php`
 
 ## Multi-language setup
 

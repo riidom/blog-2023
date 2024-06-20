@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/../post/metadata.php');
+require_once(dirname(__FILE__) . '/../post/blog_info.php');
 require_once('strings.php');
 
 function img($file, $width, $height, $alt="", $caption="") {
@@ -168,6 +169,7 @@ function post_end() {
 */
 function head_and_header($title, $path_prefix = '../..') {
   global $string;
+  global $blog_info;
 
   $lang = lang();
   $back_text = $string['back_to_index'][$lang];
@@ -177,6 +179,7 @@ function head_and_header($title, $path_prefix = '../..') {
     $link_logo_open = '<div class="header__link">';
     $link_logo_close = '</div>';
   } else {
+    $fediverse_creator = '<meta name="fediverse:creator" content="' . $blog_info['author_mastodon'] . '">';
     $link_logo_open = '<a href="/blog" class="header__link">';
     $link_logo_text = '<span class="header__back">&#8627;' . $back_text . '</span>';
     $link_logo_close = '</a>';
@@ -189,20 +192,19 @@ function head_and_header($title, $path_prefix = '../..') {
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      $fediverse_creator
+
       <link rel="stylesheet" href="$path_prefix/style.css">
       <link rel="icon" type="image/png" href="$path_prefix/favicon.png">
-      <link rel="alternate" type="application/rss+xml" title="RSS riidom's blog" href="/blog/feed.xml">
-      <title>riidom | $title</title>
+      <link rel="alternate" type="application/rss+xml" title="${blog_info['title_rss']}" href="/blog/feed.xml">
+      <title>${blog_info['title_prefix']} | $title</title>
     </head>
 
     <body $location>
       <header>
         $link_logo_open
-
-          <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 313.5 50.7"><path fill="currentColor" d="M106.2 37.2c-.8 0-2.3-1-2.1-1.5.6.7 1.8 1.5 2.6.5.7-.6.5-2.1-.7-1.5a9 9 0 0 1-4.2-.9c-1-.8-2.6-1.4-2.9-2.7 1 1 2 2 3.4 2.4 1-.3 2 .6 3 .6 1.7-.3-.7-1.7-1-2.3-.6-1-2-2.4-1.8-3.2.8 1 1.4 2.3 2.5 3 1-.7-.2-2.2 0-3.2.1-.6-.4-2 .2-2.1.3.7.1-1.2.8-1.3 1.2-.7 2.5.4 3.1 1.4.7.5.8 2.2 1.6 1.9.7-.6 1.2-1.5.7-2.4 0-1.5-.7-3-1-4.3 1 1 1.2 2.7 1.7 4-.2 1.2.5 2.3.3 3.4-.8.6-1.5 1.3-1.1 2.5.5 1.3 2.4.9 3.6.8.4 0 2-1.4 1.1-.3-1.3 1.2-3.5 1.6-5 .5-1.5 0 0 1 .4 1.6.3.5.9.6 1.3.3.9.6 0 2.1-.8 1-.9-.6-2-2.3-2.8-2-.8 1.3-1.5 2.6-2.5 3.7l-.1.1z"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.1" d="M1 1h311.5m-58 21.5c-14.6-7.3-18.8 22-2.9 18.3l2.3-.5m.6-19.8c.3 2.7 2.2 26-2.8 28a71.9 71.9 0 0 1-33.2-1.8m7.9-25.9c-8.7 0-10.2 21.9 1.1 21.1 11.4-.7 4.8-21-1.1-21zm-16-19c0 4.6-1 27-.6 38.3 0 2.2 1.9 3.4 4.2 4.6m-25.5-20.2c19-14.9 21.2 27.9-.4 15.9m.1-38.5c0 6.5-.4 34.5-.3 41m-20.7-21.5c-10-1-12 7.3-5.4 12.8 6 5 8 12.8-34.4 12.4m33.6-35c-2.2 2.4-8 4.4-6.4 9.3m-18 3.5c8-8.2 14.3-5.2 11.7 16.3m-23-15.6c15.1-14.2 11.5 8.9 11.2 16.6M123.2 21c3.3 1.1 1.3 15.2 1.4 21.4M109 19.8c-10.7-.6-12.4 21-2.2 21.2 11.3.2 12.6-20.7 2.2-21.2zm-17 4.3C80 7.6 70 55.4 91.7 38M93 1.8c0 6.5-.3 20-.6 29.1-.2 4.8-4.9 17.5 29.5 15.6m-50-24c-.2 7.3-1.3 18.5.1 19.3.7 0 2.3 0 2.8-.2m-12.3-19c.2 5.8-2.6 13.3-1 18.9.2.9 2.3 0 3 .2M47.4 25c2.2-3.7 5.1-6.7 9.7-4.6m-9.9-1.2c-.3 14.3 0 17.3-.2 23m16.6-26.8-.4 1.8m10-1.3-1.4 1.4"/></svg>
-        
+          ${blog_info['logo_svg']}  
           $link_logo_text
-
         $link_logo_close
       </header>  
   EOH;

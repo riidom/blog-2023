@@ -179,7 +179,7 @@ function head_and_header($title, $path_prefix = '../..') {
     $link_logo_open = '<div class="header__link">';
     $link_logo_close = '</div>';
   } else {
-    $fediverse_creator = '<meta name="fediverse:creator" content="' . $blog_info['author_mastodon'] . '">';
+    $fediverse_creator = '<meta property="fediverse:creator" content="' . $blog_info['author_mastodon'] . '">';
     $link_logo_open = '<a href="/blog" class="header__link">';
     $link_logo_text = '<span class="header__back">&#8627;' . $back_text . '</span>';
     $link_logo_close = '</a>';

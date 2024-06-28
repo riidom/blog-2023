@@ -27,9 +27,9 @@
 }
 
 :root {
-  --c-background: hsl(240, 6%, 15%);
-  --c-background-transp: hsla(240, 6%, 15%, 0.8);
-  --c-background-header: hsl(240, 6%, 10%);
+  --c-background: hsl(240, 6%, 12%);
+  --c-background-transp: hsla(240, 6%, 0%, 0.333);
+  --c-background-header: hsl(240, 6%, 15%);
 
   --c-header-link: hsl(192, 32%, 73%);
 
@@ -37,10 +37,10 @@
   --c-h2: hsl(63, 45%, 75%);
   --c-h3: hsl(35, 50%, 64%);
   --c-h4: hsl(0, 50%, 58%);
-  
-  --hsl-text-main: 0 0% 80%;
+
+  --hsl-text-main: 0 0% 85%;
   --c-text-main: hsl(var(--hsl-text-main));
-  --c-text-muted: hsla(var(--hsl-text-main) / 50%);
+  --c-text-muted: hsla(var(--hsl-text-main) / 60%);
   --c-link: hsl(240, 100%, 94%);
   --c-link-underline: hsla(240, 100%, 94%, 0.666);
   --c-link-hover: hsl(0, 100%, 100%);
@@ -96,17 +96,8 @@
   --pc-togglesize: 2rem;
   --pc-togglemargin: 0.25rem;
   --pc-togglegap: 0rem;
-  --pc-textwidth: calc(
-    100%
-    - var(--pc-togglesize)
-    - 2 * var(--pc-togglemargin)
-    - var(--pc-togglegap)
-  );
-  --pc-toggleoffset: calc(
-    50%
-    - var(--pc-togglesize) / 2
-    - var(--pc-togglemargin)
-  );
+  --pc-textwidth: calc(100% - var(--pc-togglesize) - 2 * var(--pc-togglemargin) - var(--pc-togglegap));
+  --pc-toggleoffset: calc(50% - var(--pc-togglesize) / 2 - var(--pc-togglemargin));
 }
 
 * {
@@ -128,18 +119,19 @@ main {
   margin-inline: auto;
 }
 
-p, li:not(.post-card) {
+p,
+li:not(.post-card) {
   padding-inline: 0.75rem;
 }
 
 /* align @media with var(--main-width) */
-@media (62rem <= width) {
+@media (62rem <=width) {
   main {
     max-width: var(--main-width);
   }
 }
 
-@media (41rem <= width < 62rem) {
+@media (41rem <=width < 62rem) {
   main {
     max-width: var(--main-width-75);
     padding-inline: 0.5rem;
@@ -157,16 +149,23 @@ p, li:not(.post-card) {
 /* Typography */
 
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
   font-weight: 400;
 }
 
-:is(h1, .h1) + :is(h2, .h2),
-:is(h2, .h2) + :is(h3, .h3) {
+:is(h1, .h1)+ :is(h2, .h2),
+:is(h2, .h2)+ :is(h3, .h3) {
   margin-top: 0;
 }
 
-:is(h3, .h3) + :is(h4, .h4) {
+:is(h3, .h3)+ :is(h4, .h4) {
   margin-top: 0.25rem;
 }
 
@@ -203,35 +202,41 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   margin-block-start: 0;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   color: var(--c-h1);
   font-size: var(--fontsize-h1);
   line-height: var(--fontsize-h1);
   margin-block-start: -0.333rem;
 }
 
-h2, .h2 {
+h2,
+.h2 {
   color: var(--c-h2);
   font-size: var(--fontsize-h2);
   line-height: var(--fontsize-h2);
   margin-block-start: calc(var(--fontsize-h2) * 1.25);
 }
 
-h3, .h3 {
+h3,
+.h3 {
   color: var(--c-h3);
   font-size: var(--fontsize-h3);
   line-height: var(--fontsize-h3);
   margin-block-start: var(--fontsize-h3);
 }
 
-h4, .h4 {
+h4,
+.h4 {
   color: var(--c-h4);
   font-size: var(--fontsize-h4);
   line-height: var(--fontsize-h4);
   margin-block-start: var(--fontsize-h4);
 }
 
-p, .p, ul:not(.post-list__ul) {
+p,
+.p,
+ul:not(.post-list__ul) {
   font-size: var(--fontsize-p);
   margin-block-start: var(--fontsize-p);
 }
@@ -243,6 +248,7 @@ li:not(.post-card) {
 }
 
 code {
+  background-color: var(--c-background-transp);
   border-radius: 0.25rem;
   border: 0.0625rem dashed var(--c-bordernote);
   color: var(--c-text-muted);
@@ -253,24 +259,25 @@ code {
   padding-inline: 0.125rem;
 }
 
-p > a {
+p>a {
   color: var(--c-link);
   text-decoration-color: var(--c-link-underline);
   text-decoration-style: dotted;
   text-decoration-thickness: 0.0625rem;
 }
 
-p > a:hover {
+p>a:hover {
   color: var(--c-link-hover);
   text-decoration-color: var(--c-link);
   text-decoration-thickness: 0.125rem;
 }
 
-p > a:focus-visible {
+p>a:focus-visible {
   text-decoration-style: solid;
 }
 
-.p-small, figcaption {
+.p-small,
+figcaption {
   font-size: var(--fontsize-small);
 }
 
@@ -286,13 +293,13 @@ header {
   width: 100vi;
 }
 
-@media (29rem <= width) {
+@media (29rem <=width) {
   header {
     height: 8.6rem;
   }
 }
 
-@media (24rem <= width < 29rem) {
+@media (24rem <=width < 29rem) {
   header {
     height: 8rem;
   }
@@ -443,7 +450,8 @@ video {
 
 
 @media (93rem <=width) {
-/* align @media with var(--main-width-150) */
+
+  /* align @media with var(--main-width-150) */
   .p-note-narrow {
     display: none;
   }
@@ -482,7 +490,8 @@ video {
 }
 
 @media (width < 93rem) {
-/* align @media with var(--main-width-150) */
+
+  /* align @media with var(--main-width-150) */
   .p-note-wide {
     display: none;
   }

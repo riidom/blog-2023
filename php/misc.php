@@ -40,20 +40,20 @@ function p_note($copy, $note, $side = "end") {
   }
 
   return <<<EOP
-  <aside class="p-note-wide ${side}">
+  <div class="p-note-wide ${side}">
     <p class="copy">${copy}</p>
-    <p class="note">${note}</p>
-  </aside>
+    <aside><p class="note">${note}</p></aside>
+  </div>
 
-  <aside class="p-note-narrow">
+  <div class="p-note-narrow">
     <p>${copy}</p>
-    <details>
+    <details role="complementary">
       <summary>
         {$more}
       </summary>
       <p>${note}</p>
     </details>
-  </aside>
+  </div>
   EOP;
 }
 

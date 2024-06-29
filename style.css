@@ -511,3 +511,15 @@ video {
     margin-inline: 0.55rem;
   }
 }
+
+
+/* About page */
+
+
+.about__link-list li {
+  list-style-type: none;
+}
+
+.about__imprint {
+  margin-block-start: 4rem;
+}

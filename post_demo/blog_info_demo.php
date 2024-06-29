@@ -11,8 +11,19 @@ $blog_info = [
 
   'author_mastodon' => '@username@server.url',
 
-  'profilepage_mastodon' => 'https://server.url/@username',
-
   'author_email' => 'blog-at-domain-dot-url',
 
+  'profile_links' => [
+  [
+    'name' => 'Some Social Media',
+    'link_text' => '@me@some.social.media',
+    'link_url' => 'https://some.social.media/@me'
+  ],
+  [
+    'name' => 'Other Website',
+    'link_text' => 'example.com/myusername',
+    'link_url' => 'https://example.com/myusername'
+  ]
+  // extend as necessary
+]
 ];

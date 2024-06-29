@@ -7,10 +7,19 @@
   <main>
     <p>Email: <?=$blog_info['author_email']?></p>
     <p>RSS: <a href="<?=$blog_info['url_rss']?>">Feed</a></p>
-    <p>Socials:
-      <a href="<?=$blog_info['profilepage_mastodon']?>" target="_blank">Mastodon</a>
-    </p>
-    <p><?=string('imprint')?></p>
+    <p><?=string('elsewhere')?></p>
+    <ul class="about__link-list">
+      <?php foreach ($blog_info['profile_links'] as $item) {
+        echo '<li><p>'
+        . $item['name'] . ': '
+        . '<a href="' . $item['link_url'] . '" target="_blank">'
+        . $item['link_text']
+        . '</a></p></li>';
+      }?>
+    </ul>
+    
+    
+    <p class="about__imprint"><?=string('imprint')?></p>
   </main>
 
 </body>

@@ -63,15 +63,18 @@ In `post/`, create a sub-directory named after the post's date in `yymmdd` forma
 - a teaser image (see below)
 - a boilerplate php file (`{name}.php`). Copy as-is from other posts, or from the reference sub-section below
 - a content php file per language (`{name}.{language}.php`)
-  - start the content with a `<h2>` tag, let it play nice with the post title (which will be the `h1`, right above it!).
+  - start the content with a `<h2>` tag, let it play nice with the post title (which will be the `h1`, right above it!)
+  - also see content functions below
 
 There is no check or fallback for missing translations, you have to commit to the languages you want to support. Visitors will just see a `404` when a blog post file is missing.
+
+#### Content functions
 
 For details, see the beginning of `php/misc.php` for available content functions to use, and the demo content for example usage. Otherwise, here a short list:
 
 - `img($file, $width, $height, $alt="", $caption="")`: Displays an image, with optional caption, and builtin link to open full-size in a new tab.
 - `video($file, $width, $height, $alt="")`: Displays a self-hosted video file.
-- `p_note($copy, $note, $side = "end")`: Shows an ordinary `<p>` with the `$copy`, but with a `$note` text on one side of the main area (`$side = "start"` or `"end`, depending on your local translates to left or right side). On mobile/tablet, it turns into a summary/detail element below the parapgraph.
+- `p_note($copy, $note, $side = "end")`: Shows an ordinary `<p>` with the `$copy`, but with a `$note` text on one side of the main area (`$side = "start"` or `"end"`, depending on your local translates to left or right side). On mobile/tablet, it turns into a summary/detail element below the parapgraph.
 
 #### Boilerplate PHP for posts
 ```php
@@ -117,7 +120,7 @@ __ATTENTION:__ If you work locally, make sure to not accidentally copy a localho
 
 ## Personal data
 
- -everything is bundled in `post/blog_info.php`
+ Everything is bundled in `post/blog_info.php`.
 
 ## Multi-language setup
 

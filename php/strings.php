@@ -5,6 +5,10 @@ $string = [
     'de' => 'Diese Webseite speichert keine Cookies.',
     'en' => 'This website stores no cookies.'
   ],
+  'elsewhere' => [
+    'de' => 'Auf anderen Seiten:',
+    'en' => 'On other sites:'
+  ],
   'more' => [
     'de' => 'Mehr...',
     'en' => 'more...'

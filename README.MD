@@ -1,5 +1,5 @@
 
-*See `RELEASE.md` for upcoming changes*
+*See `RELEASE.MD` for upcoming changes*
 
 # My super simple blog setup
 

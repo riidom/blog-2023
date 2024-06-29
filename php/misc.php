@@ -75,6 +75,13 @@ function lang() {
   // return 'en';
 }
 
+function get_ext() {
+  if ($_SERVER['REMOTE_ADDR'] === "127.0.0.1"): return ".php";
+  else: return "";
+  endif;
+  // return ".php"
+}
+
 /*
   gets a localized string from _string.php
 */

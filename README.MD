@@ -8,10 +8,10 @@
 ## Checklist for writing a new post
 
 1. update `post/metadata.php` with date, name, and per language: title and teaser
-2. create new directory in `post/` named after date, inside:
-    1. add teaser image, named {name}.webp
-    2. from old post, copy boilerplate php and rename to {name}.php
-    3. add content php's per language {name}.{lang}.php
+2. create new directory in `post/` named after date (e.g. `221031/`), inside:
+    1. add teaser image, named `{name}.webp`
+    2. from old post, copy boilerplate php and rename to `{name}.php`
+    3. add content php's per language `{name}.{lang}.php`
 3. update `feed.xml`
 4. push to your server: new directory, updated `metadata.php` & `feed.xml`
 
@@ -19,7 +19,7 @@ _For details, see below._
 
 ## License
 
-The blog "software" is MIT, the example content text is CC-0, the example media for the blog and posts, including the teaser images, is also CC-0.
+The blog software is MIT, the example content text is CC-0, the example media for the blog and posts, including the teaser images, is also CC-0.
 
 The license for the font can be found as PDF in the `fonts` directory, or read online at https://brailleinstitute.org/wp-content/uploads/2020/11/Atkinson-Hyperlegible-Font-License-2020-1104.pdf.
 
@@ -40,6 +40,10 @@ Once this is sorted out (or you just created your own content and are using demo
 - if you use git, the list of modified files is useful to see what you have to push to server
 - if you write content, check for layout breaks on long descriptions etc., it's not fool-proof
 
+### .htaccess and mod_rewrite
+
+Since after `v1.0.0`, there will be a `.htaccess` to hide the `.php` in URLs. This checks for server URL, so on `127.0.0.1` it will still show the `.php`. If this causes you trouble for some reason, look in `misc.php` for the function `get_ext()`, comment everything out and de-comment the line that returns just the static string.
+
 ## Writing a new post
 
 Four blog posts and some media are included as demo content. Feel free to change or delete. 
@@ -59,10 +63,15 @@ In `post/`, create a sub-directory named after the post's date in `yymmdd` forma
 - a teaser image (see below)
 - a boilerplate php file (`{name}.php`). Copy as-is from other posts, or from the reference sub-section below
 - a content php file per language (`{name}.{language}.php`)
+  - start the content with a `<h2>` tag, let it play nice with the post title (which will be the `h1`, right above it!).
 
 There is no check or fallback for missing translations, you have to commit to the languages you want to support. Visitors will just see a `404` when a blog post file is missing.
 
-See the beginning of `php/misc.php` for available content functions to use, and the demo content for example usage.
+For details, see the beginning of `php/misc.php` for available content functions to use, and the demo content for example usage. Otherwise, here a short list:
+
+- `img($file, $width, $height, $alt="", $caption="")`: Displays an image, with optional caption, and builtin link to open full-size in a new tab.
+- `video($file, $width, $height, $alt="")`: Displays a self-hosted video file.
+- `p_note($copy, $note, $side = "end")`: Shows an ordinary `<p>` with the `$copy`, but with a `$note` text on one side of the main area (`$side = "start"` or `"end`, depending on your local translates to left or right side). On mobile/tablet, it turns into a summary/detail element below the parapgraph.
 
 #### Boilerplate PHP for posts
 ```php
@@ -96,7 +105,7 @@ Add this on top, below `<title>` section.
 <item>
   <title>YOUR TITLE HERE</title>
   <pubDate>Sun, 10 Sep 2023 15:00:00 +0000</pubDate>
-  <link>https://YOUR.URL/blog/{date}/{name}.php</link>
+  <link>https://YOUR.URL/blog/{date}/{name}</link>
   <description>{teaser}</description>
 </item>
 ```

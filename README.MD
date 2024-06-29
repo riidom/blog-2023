@@ -1,3 +1,6 @@
+
+*See `RELEASE.md` for upcoming changes*
+
 # My super simple blog setup
 
 - write html yourself

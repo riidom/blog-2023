@@ -9,21 +9,24 @@ $blog_info = [
 
   'title_prefix' => 'blogathing',
 
-  'author_mastodon' => '@username@server.url',
-
   'author_email' => 'blog-at-domain-dot-url',
 
   'profile_links' => [
-  [
-    'name' => 'Some Social Media',
-    'link_text' => '@me@some.social.media',
-    'link_url' => 'https://some.social.media/@me'
+    [
+      'name' => 'Some Social Media',
+      'link_text' => '@me@some.social.media',
+      'link_url' => 'https://some.social.media/@me'
+    ],
+    [
+      'name' => 'Other Website',
+      'link_text' => 'example.com/myusername',
+      'link_url' => 'https://example.com/myusername'
+    ],
   ],
-  [
-    'name' => 'Other Website',
-    'link_text' => 'example.com/myusername',
-    'link_url' => 'https://example.com/myusername'
-  ]
-  // extend as necessary
-]
+
+  'meta_tags_post_only' => [
+    '<meta property="fediverse:creator" content="@yourName@mastodon.instance">',
+  ],
+
+  'meta_tags_index_only' => [],
 ];

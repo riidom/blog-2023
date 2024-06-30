@@ -2,7 +2,7 @@
 <?php include_once 'php/misc.php'?>
 <?php include_once 'post/blog_info.php'?>
 
-<?=head_and_header(string('about'), '.');?>
+<?=head_and_header('', string('about'), '.');?>
 
   <main>
     <p>Email: <?=$blog_info['author_email']?></p>

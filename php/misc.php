@@ -68,6 +68,7 @@ function p_note($copy, $note, $side = "end") {
 /*
   many times used helper to get the current language
 */
+
 function lang() {
   $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
   $lang = in_array($lang, ['en', 'de']) ? $lang : 'en';
@@ -83,8 +84,9 @@ function get_ext() {
 }
 
 /*
-  gets a localized string from _string.php
+  gets a localized string from strings.php
 */
+
 function string($id) {
   global $string;
 
@@ -94,12 +96,11 @@ function string($id) {
 /*
   returns prettified date from YYMMDD
 */
-function prettify_date($date) {
-  global $string;
 
+function prettify_date($date) {
   $year = '20' . substr($date, 0, 2);
   $month = substr($date, 2, 2);
-  $month_str = $string['month'][lang()][(int)$month - 1];
+  $month_str = string('month')[(int)$month - 1];
   $day = substr($date, 4, 2);
   return "{$year}-{$month_str}-{$day}";
 }
@@ -114,6 +115,7 @@ function rss_date($date) {
 /*
   return data used in post root .php
 */
+
 function get_post_meta($cwd) {
   global $blog_titles;
 
@@ -129,6 +131,7 @@ function get_post_meta($cwd) {
 /*
   returns html for begin of post pages
 */
+
 function post_begin($date, $path_prefix = '../..') {
   global $blog_titles;
 
@@ -143,7 +146,7 @@ function post_begin($date, $path_prefix = '../..') {
   $date_pretty = prettify_date($date);
   $date_rss = rss_date($date);
 
-  $head_and_header = head_and_header($title);
+  $head_and_header = head_and_header($date, $title);
   
   $begin = <<<EOH
   {$head_and_header}
@@ -160,6 +163,7 @@ function post_begin($date, $path_prefix = '../..') {
 /*
   returns html for end of post pages
 */
+
 function post_end() {
   $end = <<<EOH
       </main>
@@ -171,26 +175,106 @@ function post_end() {
 }
 
 /*
-  returns html: head and header tags
-  they are the same on post page and index page
+  for head_and_header():
+    header logo handling index vs post
 */
-function head_and_header($title, $path_prefix = '../..') {
-  global $string;
+
+function get_logo_markup($type = 'index') {
+  if ($type === 'index') {
+    return [
+      'link_logo_open' => '<div class="header__link">',
+      'link_logo_text' => '',
+      'link_logo_close' => '</div>',
+    ];
+  } else {
+    $back_text = string('back_to_index');
+    return [
+      'link_logo_open' => '<a href="/blog" class="header__link">',
+      'link_logo_text' => '<span class="header__back">&#8627;' . $back_text . '</span>',
+      'link_logo_close' => '</a>',
+    ];
+  }
+}
+
+/*
+  for head_and_header():
+    assembles <meta> tags based on array in blog_info.php
+    $type be 'index' or 'post' only
+*/
+
+function meta_misc($type = 'index') {
   global $blog_info;
 
-  $lang = lang();
-  $back_text = $string['back_to_index'][$lang];
+  $meta_string = '';
+  foreach($blog_info['meta_tags_'.$type.'_only'] as $meta) {
+    $meta_string .= $meta;
+  }
+  return $meta_string;
+}
+
+/*
+  for head_and_header():
+    returns opengraph stuff
+*/
+
+function get_og($date, $title) {
+  global $blog_info;
+
+  $full_url = $_SERVER['SCRIPT_URI'];
+  $full_title = $blog_info['title_prefix'] . ' | ' . $title;
+
+  if ($date !== '') {
+    return <<<OG
+    <meta property="og:title" content="$full_title">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="$full_url">
+    <meta property="og:image" content="$full_url.webp">
+    OG;
+  } else {
+    return <<<OG
+    <meta property="og:title" content="$full_title">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="$full_url">
+    OG;
+  }
+}
+
+/*
+  returns html: head and header tags
+  they are (mostly) the same on post page and index page
+*/
+
+function head_and_header($date, $title, $path_prefix = '../..') {
+  global $blog_info;
+
+  $back_text = string('back_to_index');
+
+  $body_class = '';
+  if ($date !== '') {
+    $body_class .= 'is_post ';
+  } else {
+    $body_class .= 'is_page ';
+  }
+  if ($title === 'Index') {
+    $body_class .= 'is_main ';
+  }
+  $location = 'class="' . $body_class . '"';
 
   if ($title === 'Index') {
-    $location = 'class="is_main"';
-    $link_logo_open = '<div class="header__link">';
-    $link_logo_close = '</div>';
+    $logo_markup = get_logo_markup('index');
+    $meta = meta_misc('index');
   } else {
-    $fediverse_creator = '<meta property="fediverse:creator" content="' . $blog_info['author_mastodon'] . '">';
-    $link_logo_open = '<a href="/blog" class="header__link">';
-    $link_logo_text = '<span class="header__back">&#8627;' . $back_text . '</span>';
-    $link_logo_close = '</a>';
+    $logo_markup = get_logo_markup('post');
+    $meta = meta_misc('post');
   }
+
+  $og_meta = get_og($date, $title);
+
+  [
+    'link_logo_open' => $link_logo_open,
+    'link_logo_text' => $link_logo_text,
+    'link_logo_close' => $link_logo_close
+  ] = $logo_markup;
 
   $head_and_header = <<<EOH
   <!DOCTYPE html>
@@ -199,7 +283,8 @@ function head_and_header($title, $path_prefix = '../..') {
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      $fediverse_creator
+      $meta
+      $og_meta
 
       <link rel="stylesheet" href="$path_prefix/style.css">
       <link rel="icon" type="image/png" href="$path_prefix/favicon.png">

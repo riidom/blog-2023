@@ -290,7 +290,6 @@ header {
   display: flex;
   justify-content: center;
   padding-block: 0.5rem 1rem;
-  width: 100vi;
 }
 
 @media (29rem <=width) {
